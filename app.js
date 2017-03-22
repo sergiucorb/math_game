@@ -1,2 +1,0 @@
-sakyra
-akakakaakakakak
