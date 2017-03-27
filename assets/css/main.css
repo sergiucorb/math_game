@@ -40,3 +40,69 @@ html{
     color:white;
     display: none;
 }
+
+#question{
+    width:450px;
+    height: 150px;
+    background-color: #9DA0EA;
+    box-shadow:0px 4px 0px 0px #535aa8;
+    margin:50px auto 10px auto;
+    font-size: 100px;
+    text-align: center;
+    font-family: cursive, sans-serif ;
+    color: black;
+}
+
+#answer{
+    width:450px;
+    height:50px;
+    background-color: mediumorchid;
+    margin:10px auto ;
+    box-shadow: 0px 4px 0px 0px rebeccapurple ;
+    text-align: center; 
+    line-height: 50px;
+    font-size: 20px;
+    color:black;
+}
+
+#choices{
+    width: 450px;
+    height: 100px;
+    margin: 5px auto;   
+}
+
+.answerBox{
+    width: 85px;
+    height: 85px;
+    background-color: white;
+    border-radius: 3px;
+    float:left;
+    margin-right:36px;
+    box-shadow: 0px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    text-align: center;
+    line-height: 80px;
+    color:grey;
+}
+
+#answer-box4{
+   margin-right: 0px;
+}
+
+.answerBox:hover{
+    background-color: #9C89F6;
+    color: white;
+    box-shadow: 0px 4px #6b54d3;
+}
+
+#start-game{
+    width: 90px;
+    height: 40px;
+    background-color: palegreen;
+    border-radius:3px;
+    box-shadow: 0px 4px 0px 0px darkgrey;
+    margin: -5px auto auto auto;
+    text-align: center;   
+    line-height: 40px;
+    cursor: pointer;
+}
