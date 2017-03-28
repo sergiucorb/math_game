@@ -55,8 +55,7 @@ function generateQA() {
     var randomBox = Math.floor((Math.random() * 100) + 1);
     var answers = [trueAnswer];
     for (var i = 1; i < 5; i++) {
-        if (i !== trueAnswerRandomBox) {
-            //    var wrongAnswerRandom = (Math.floor((Math.random() * 10) + 1)) * (Math.floor((Math.random() * 10) + 1)); 
+        if (i !== trueAnswerRandomBox) { 
             do {
                 wrongAnswerRandom = (Math.floor((Math.random() * 10) + 1)) * (Math.floor((Math.random() * 10) + 1));
             }
