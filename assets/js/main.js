@@ -1,50 +1,29 @@
-//daca apasam butonul start/reset
-    //daca jucam:
-        // reincarcam pagina
-    //daca nu jucam:
-        //seteaza scorul la 0
-        //afisam timpul ramas
-        //reducem timpul cu 1 sec 
-            //timp ramas?
-                //da - continua
-                //nu- gameover
-        //schimba butonul in reset
-        //genereaza o noua intrebare si un nou raspuns
-
-//daca apasam butonul 'answer'
-    //daca jucam: 
-        //corect?
-            //da
-                //mareste scorul
-                //afiseaza CORRECT pt 1 sec
-                //genereaza o noua intrebare si raspuns
-            //nu
-    
-                //afiseaza TRY AGAIN pt 1 sec
 var playing = false;
-var score;
+var score = 0;
 var action;
 var timeRemaining;
+var trueAnswer;
+var randomBox;
+var wrongAnswerRandom;
 
 document.getElementById("start-reset").onclick = function(){
     if(playing == true){
         location.reload();
     }else{
-        playing = true;
         score = 0;
+        playing = true;
+        timeRemaining = 10;
         show("time-remaining");
-        timeRemaining = 3;
         startCountdown();
         document.getElementById("start-reset").innerHTML = "Reset Game";
         hide("game-over");
+        generateQA();     
     }
 }
-//functions
 function startCountdown(){
-    
     var counter = document.getElementById("timer");
     var action = setInterval(function(){
-        timeRemaining-=1; 
+        timeRemaining = timeRemaining - 1; 
         counter.innerHTML = timeRemaining + " sec";
         if(timeRemaining == 0 ){
             stopCountdown();
@@ -67,3 +46,49 @@ function hide(Id){
 function show(Id){
     document.getElementById(Id).style.display = "block";
 }
+function generateQA(){
+  
+  var  x = Math.floor((Math.random() * 10) + 1);
+  var  y = Math.floor((Math.random() * 10) + 1);    
+  trueAnswer = x * y;
+  trueAnswerRandomBox = Math.floor((Math.random() * 4) + 1);
+  document.getElementById("answer-box" + trueAnswerRandomBox).innerHTML = trueAnswer;
+  var randomBox = Math.floor((Math.random() * 100) + 1);
+  var answers = [trueAnswer];
+  for (var i = 1; i < 5; i++){
+    if (i !== trueAnswerRandomBox ) {
+    //    var wrongAnswerRandom = (Math.floor((Math.random() * 10) + 1)) * (Math.floor((Math.random() * 10) + 1)); 
+      do{
+          wrongAnswerRandom = (Math.floor((Math.random() * 10) + 1)) * (Math.floor((Math.random() * 10) + 1));
+      }
+      while(answers.indexOf(wrongAnswerRandom) > -1)
+     document.getElementById("answer-box" + i).innerHTML = wrongAnswerRandom;
+     answers.push(wrongAnswerRandom);
+    } 
+}
+  document.getElementById("question").innerHTML = x + "x" + y;
+for(var i = 1; i < 5; i++){
+    
+  document.getElementById("answer-box" + i ).onclick = function(){
+      wrongAnswer();
+  }
+  document.getElementById("answer-box" + trueAnswerRandomBox).onclick = function(){
+      correctAnswer();
+      score++;
+      document.getElementById("scorevalue").innerHTML = score;
+}  
+}
+function correctAnswer(){
+    show("correctAnswer");
+setInterval(function(){
+    hide("correctAnswer");
+    },1000);
+     generateQA();
+ }
+function wrongAnswer(){
+    show("wrongAnswer");
+setInterval(function(){
+    hide("wrongAnswer");
+    },1000); 
+}}
+
